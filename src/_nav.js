@@ -156,8 +156,8 @@ export default {
       icon: 'icon-pie-chart',
     },
     {
-      name: 'tests',
-      url: '/tests',
+      name: 'Posts',
+      url: '/posts',
       icon: 'icon-pie-chart',
     },
     {
