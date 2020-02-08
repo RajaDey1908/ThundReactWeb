@@ -5,7 +5,6 @@ const API_URL = 'https://reqres.in';
 
 export const savePayload = (value) => {
     return {
-
         type: actionTypes.DETAILS,
         value: value
     }
@@ -22,8 +21,8 @@ export const details = (value) => {
             dispatch(savePayload(value))
         }, 2000);
     }
-
 }
+
 export const date = (value) => {
     return {
         type: actionTypes.DATE,

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Posts = React.lazy(() => import('./Views/Admin/Posts'));
+const Login = React.lazy(() => import('./Views/Admin/login/Login'));
+const Posts = React.lazy(() => import('./Views/Admin/posts/Posts'));
 const Breadcrumbs = React.lazy(() => import('./Components/Base/Breadcrumbs'));
 const Cards = React.lazy(() => import('./Components/Base/Cards'));
 const Carousels = React.lazy(() => import('./Components/Base/Carousels'));
@@ -42,6 +43,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/posts', name: 'Posts', component: Posts },
+  { path: '/login-page', name: 'Login', component: Login },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

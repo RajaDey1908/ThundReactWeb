@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 
 import { connect } from 'react-redux'
-import * as actionType from '../../store/index'
+import * as actionType from '../../../store/index'
 
 class Forms extends Component {
   constructor(props) {

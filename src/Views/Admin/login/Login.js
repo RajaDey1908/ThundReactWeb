@@ -19,32 +19,6 @@ import { connect } from 'react-redux'
 import * as actionType from '../../../store/index'
 
 class Login extends Component {
-
-  constructor(props) {
-    super(props);
-    this.changeUsername = this.changeUsername.bind(this);
-    this.changePassword = this.changePassword.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-    this.state = {
-      username: '',
-      password: ''
-    }
-  }
-
-  changeUsername(event) {
-    this.setState({ username: event.target.value });
-  }
-
-  changePassword(event) {
-    this.setState({ password: event.target.value });
-
-  }
-
-  submitHandler(event){
-    event.preventDefault();
-    this.props.onAuth(this.state.username, this.state.password)
-  }
-
   render() {
     return (
       <div className="app flex-row align-items-center">
@@ -54,7 +28,7 @@ class Login extends Component {
               <CardGroup>
                 <Card className="p-4">
                   <CardBody>
-                    <Form onSubmit={this.submitHandler}>
+                    <Form>
                       <h1>Login</h1>
                       <p className="text-muted">Sign In to your account</p>
                       <InputGroup className="mb-3">
@@ -63,7 +37,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username" autoComplete="username" onChange={this.changeUsername} />
+                        <Input type="text" placeholder="Username" autoComplete="username" />
                       </InputGroup>
                       <InputGroup className="mb-4">
                         <InputGroupAddon addonType="prepend">
@@ -71,11 +45,11 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Password" autoComplete="current-password" onChange={this.changePassword} />
+                        <Input type="password" placeholder="Password" autoComplete="current-password" />
                       </InputGroup>
                       <Row>
                         <Col xs="6">
-                          <Button color="primary" className="px-4">Login</Button>
+                          <Button color="primary" className="px-4">Logindd</Button>
                         </Col>
                         <Col xs="6" className="text-right">
                           <Button color="link" className="px-0">Forgot password?</Button>
@@ -106,11 +80,19 @@ class Login extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    onAuth: (username, password) => dispatch(actionType.auth(username, password)),
+    title: state.redFst.title,
+    subject: state.redFst.subject,
+    details: state.redSnd.details,
+    date: state.redSnd.date,
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapDispatchToProps = dispatch =>{
+  return{
+    onAuth: (username, password) => dispatch(actionType.authStart(username, password)),
+  }
+}
 
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
