@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 
 import { connect } from 'react-redux'
-import * as actionTypes from '../../store/actions/actions'
+import * as actionType from '../../store/index'
 
 class Forms extends Component {
   constructor(props) {
@@ -83,10 +83,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onEnterTitle: () => dispatch({type: actionTypes.TITLE}),
-    onEnterSubject: () => dispatch({type: actionTypes.SUBJECT}),
-    onEnterDetails: () => dispatch({type: actionTypes.DETAILS}),
-    onEnterDate: () => dispatch({type: actionTypes.DATE})
+    onEnterTitle: () => dispatch(actionType.title()),
+    onEnterSubject: () => dispatch(actionType.subject()),
+    onEnterDetails: () => dispatch(actionType.details("DETAILS")),
+    onEnterDate: () => dispatch(actionType.date("DATE"))
   }
 }
 

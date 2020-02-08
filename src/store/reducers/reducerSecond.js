@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actions'
+import * as actionTypes from '../types/types'
 
 const initialState = {
     details: "",
@@ -10,12 +10,12 @@ const reducer = (state = initialState, action) => {
         case actionTypes.DETAILS:
             return {
                 ...state,
-                details: "DETAILS"
+                details: action.value
             }
         case actionTypes.DATE:
             return {
                 ...state,
-                date: "DATE"
+                date: action.value
             }
 
     }
