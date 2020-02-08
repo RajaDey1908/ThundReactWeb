@@ -56,7 +56,8 @@ class Login extends Component {
                   <CardBody>
                     <Form onSubmit={this.submitHandler}>
                       <h1>Login</h1>
-                      <p className="text-muted">Sign In to your account</p>
+                      {console.log("sdfsdf, localStorage", this.props.authData)}
+                      <p className="text-muted">Sign In to your account {this.props.authData}</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -105,6 +106,11 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    authData: state.auth.token,
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -112,5 +118,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 

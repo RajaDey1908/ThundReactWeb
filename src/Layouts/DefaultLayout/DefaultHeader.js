@@ -7,6 +7,10 @@ import { AppAsideToggler, AppNavbarBrand, AppSidebarToggler } from '@coreui/reac
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 
+
+import { connect } from 'react-redux'
+import * as actionType from '../../store/index'
+
 const propTypes = {
   children: PropTypes.node,
 };
@@ -66,7 +70,7 @@ class DefaultHeader extends Component {
               <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
               <DropdownItem divider />
               <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
-              <DropdownItem onClick={e => this.props.onLogout(e)}><i className="fa fa-lock"></i> Logout</DropdownItem>
+              <DropdownItem  onClick={this.props.onLogout}><i className="fa fa-lock"></i> Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
@@ -77,7 +81,12 @@ class DefaultHeader extends Component {
   }
 }
 
-DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
 
-export default DefaultHeader;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: () => dispatch(actionType.logout())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DefaultHeader);

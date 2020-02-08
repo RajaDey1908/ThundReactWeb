@@ -26,19 +26,36 @@ export const auth = (username, password) => {
     return dispatch => {
         dispatch(authStart());
         const url = `${API_URL}/api/login`;
-        const payload={
-            email:username,
-            password:password
+        const payload = {
+            email: username,
+            password: password
         }
-        axios.post(url,payload).then(response => response.data)
+        axios.post(url, payload).then(response => response.data)
             .then((data) => {
-                console.log("data", data)
-                dispatch(authSuccess(data));
+                localStorage.setItem('token', data.token)
+                dispatch(authSuccess(data.token));
             })
-            .catch((error)=>{
-                console.log("error", error);
+            .catch((error) => {
                 dispatch(authFail(error));
             })
-        
+
+    }
+}
+
+export const logout = () => {
+    localStorage.removeItem('token')
+    return {
+        type: actionTypes.AUTH_FAIL,
+    }
+}
+
+export const authCheckStatus = () => {
+    return dispatch => {
+        let token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout())
+        } else {
+            dispatch(authSuccess(token))
+        }
     }
 }

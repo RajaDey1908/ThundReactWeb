@@ -12,10 +12,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducerFirst from './store/reducers/reducerFirst'
 import reducerSecond from './store/reducers/reducerSecond'
+import reducerAuth from './store/reducers/reducerAuth'
 
 const rootReducer=combineReducers({
     redFst:reducerFirst,
-    redSnd:reducerSecond
+    redSnd:reducerSecond,
+    auth:reducerAuth
 })
 
 const logger = store => {

@@ -18,13 +18,14 @@ import * as actionType from '../../../store/index'
 class Forms extends Component {
   constructor(props) {
     super(props);
-    
+
   }
 
   render() {
     return (
       <div className="animated fadeIn">
         <Row>
+          {console.log("post, localStorage", localStorage)}
           <Col xs="12" sm="12" >
             <Card>
               <CardHeader>
@@ -38,7 +39,7 @@ class Forms extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="subject">Subject</Label>
-                  <Input type="text" id="subject" placeholder="Enter your subject" value={this.props.subject} onChange={this.props.onEnterSubject}/>
+                  <Input type="text" id="subject" placeholder="Enter your subject" value={this.props.subject} onChange={this.props.onEnterSubject} />
                 </FormGroup>
                 <FormGroup >
                   <Label htmlFor="details">Details</Label>
@@ -48,7 +49,7 @@ class Forms extends Component {
                 <FormGroup row >
                   <Col md="6">
                     <Label htmlFor="date">Date</Label>
-                    <Input type="date" id="date" name="date" placeholder="Date" value={this.props.date} onChange={this.props.onEnterDate}/>
+                    <Input type="date" id="date" name="date" placeholder="Date" value={this.props.date} onChange={this.props.onEnterDate} />
                   </Col>
                   <Col md="6">
                     <Label>Status</Label>
@@ -81,8 +82,8 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch =>{
-  return{
+const mapDispatchToProps = dispatch => {
+  return {
     onEnterTitle: () => dispatch(actionType.title()),
     onEnterSubject: () => dispatch(actionType.subject()),
     onEnterDetails: () => dispatch(actionType.details("DETAILS")),
@@ -90,4 +91,4 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Forms);
+export default connect(mapStateToProps, mapDispatchToProps)(Forms);

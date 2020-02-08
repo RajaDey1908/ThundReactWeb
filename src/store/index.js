@@ -12,5 +12,7 @@ export {
     authStart,
     authSuccess,
     authFail,
-    auth
-} from './actions/auth'
+    auth,
+    logout,
+    authCheckStatus
+} from './actions/actionsAuth'
