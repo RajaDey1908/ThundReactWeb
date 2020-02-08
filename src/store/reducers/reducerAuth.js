@@ -7,7 +7,6 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    console.log("action", action.authData)
     switch (action.type) {
         case actionTypes.AUTH_SUCCESS:
             return updateObjects({ state, token: action.authData })

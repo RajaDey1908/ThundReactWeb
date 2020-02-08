@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import {
   Button,
   Card,
@@ -20,11 +21,17 @@ class Forms extends Component {
     super(props);
 
   }
+  
 
   render() {
+    let authRedirect=null
+    if(!this.props.authData){
+      authRedirect= <Redirect to="/login" />
+    }
     return (
       <div className="animated fadeIn">
         <Row>
+          {authRedirect}
           {console.log("post, localStorage", localStorage)}
           <Col xs="12" sm="12" >
             <Card>
@@ -79,6 +86,7 @@ const mapStateToProps = state => {
     subject: state.redFst.subject,
     details: state.redSnd.details,
     date: state.redSnd.date,
+    authData: state.auth.token,
   }
 }
 
